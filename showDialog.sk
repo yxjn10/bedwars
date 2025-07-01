@@ -1,0 +1,2 @@
+on join:
+    execute console command "dialog show %player% test:firstdialog"

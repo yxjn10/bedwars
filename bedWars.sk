@@ -1,0 +1,23 @@
+command /bedWars <text>:
+  aliases: /bw, /베드워즈, /베워
+  trigger:
+    if player is op:
+      if arg-1 is "start":
+        execute console command "kill @a"
+        execute console command "kill @e[type=item]"
+        execute console command "time set day"
+        execute console command "weather clear"
+        execute console command "gamemode survival @a"
+        broadcast "&베드워즈를 시작합니다!"
+      else if arg-1 is "end":
+        execute console command "tag @a remove pink"
+        execute console command "tag @a remove yellow"
+        execute console command "tag @a remove green"
+        execute console command "tag @a remove blue"
+        execute console command "tag @a remove pung"
+        execute console command "kill @e[type=bamboo_chest_raft]"
+        execute console command "kill @e[type=item]"
+        execute console command "spawnpoint @a -13 -60 18"
+        broadcast "베드워즈를 종료합니다"
+    else:
+      message "이 명령어를 실행할 권한이 없습니다"

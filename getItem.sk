@@ -1,0 +1,51 @@
+function giveRandomItem(p: player):
+    set {_random} to random integer between 0 and 107
+    if {_random} is greater than 53:
+        set {_x} to -2
+        set {_y} to -60
+        set {_z} to 7
+        set {_world} to world "world"
+        set {_random} to {_random} -54
+
+        set {_loc} to location at {_x}, {_y}, {_z} in {_world}
+        set {_chest} to block at {_loc}
+        set {_item} to item in slot {_random} of {_chest}
+        give {_item} to {_p}
+    else:
+        set {_x} to -2
+        set {_y} to -60
+        set {_z} to 5
+        set {_world} to world "world"
+
+        set {_loc} to location at {_x}, {_y}, {_z} in {_world}
+        set {_chest} to block at {_loc}
+        set {_item} to item in slot {_random} of {_chest}
+        give {_item} to {_p}
+variables:
+    {started} = false
+
+command /giveItem <text>:
+    aliases: /ri, /randomitem, /gi
+    trigger:
+        if arg is "start":
+            if {started} is false:
+                set {started} to true
+                broadcast "&a랜덤아이템 지급을 시작합니다!"
+            else:
+                send "&c랜덤아이템이 이미 지급 중입니다"
+        else if arg is "end":
+            if {started} is true:
+                set {started} to false
+                broadcast "&a랜덤아이템 지급을 중단했습니다"
+            else:
+                send "&c랜덤아이템이 지급 중이지 않습니다"
+
+every 5 seconds:
+    if {started} is true:
+        loop all players:
+            giveRandomItem(loop-player)
+
+command /giverandomitem:
+    executable by: console and players
+    trigger:
+        giveRandomItem(player)
