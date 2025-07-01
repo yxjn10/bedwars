@@ -1,4 +1,5 @@
 # random item bedwars by SoloJ_heart
+made for minecraft version 1.21.5 (showDialog.sk works only in 1.21.6)
 
 essential plugins : skript
 
