@@ -15,9 +15,11 @@ command /bedWars <text>:
         execute console command "tag @a remove green"
         execute console command "tag @a remove blue"
         execute console command "tag @a remove pung"
+        execute console command "tag @a remove fail"
         execute console command "kill @e[type=bamboo_chest_raft]"
         execute console command "kill @e[type=item]"
         execute console command "spawnpoint @a -13 -60 18"
+        execute console command "clear @a"
         broadcast "베드워즈를 종료합니다"
     else:
       message "이 명령어를 실행할 권한이 없습니다"
